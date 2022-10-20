@@ -1,0 +1,8 @@
+---
+- name: Manage windows servers
+  hosts: all
+  tasks:
+    - name: create directory structure
+      win_file:
+             path: C:\Temp\flexib
+             state: directory

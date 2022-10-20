@@ -1,0 +1,7 @@
+--- 
+- name: win_reboot module demo
+  hosts: all
+  become_method: runas
+  tasks:
+    - name: reboot host(s)
+      ansible.builtin.ping:

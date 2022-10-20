@@ -1,0 +1,13 @@
+---
+- name: win_shell module demo
+  hosts: all
+  tasks:
+    - name: check getdate
+      ansible.windows.win_shell: |
+        Set-Item wsman:\localhost\client\trustedhosts * -Confirm:$false
+        hostname
+        Get-Date        
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines

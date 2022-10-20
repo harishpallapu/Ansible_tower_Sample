@@ -1,0 +1,37 @@
+---
+- name: Running Docker
+  hosts: all
+  become: false
+  gather_facts: false
+  tasks:
+  
+
+  - name: pull an image
+  docker_image:
+    name: harishpallapu/jmeter-3i:latest
+- name: Create a data container
+  docker_container:
+    name: jmeter
+    image: harishpallapu/jmeter-3i:latest
+    state: started
+  ansible.builtin.file:
+    path: /jmeter/bin/project
+    state: directory
+    mode: '0755
+    volumes:
+      - ${PWD}:/jmeter/bin/project
+  ansible.builtin.git:
+    repo: 'https://github.com/Poornateja2509/NRTC_JMeter.git'
+    dest: /jmeter/bin/project
+  community.docker.docker_container_exec:                                                                #- name: Run a simple command (command)
+    container: jmeter
+    command: sh /jmeter/bin/jmeter -n -t *.jmx -l result.jtl -e -o result.html
+    chdir: /jmeter/bin/project/NRTC_JMeter
+  register: result
+- name: Print stdout
+  debug:
+    var: result.stdout
+- name: Copy a result.html file
+  ansible.windows.win_copy:
+    src: /var/lib/awx/projects/NRTC_JMeter
+    dest: C:\Temp\setfoldername

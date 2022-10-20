@@ -1,0 +1,8 @@
+win_ec2_sec_group: launch-wizard-8
+aws_region:  ap-south-1
+instance_type: t2.micro
+image: ami-03e1a0a6d6e66e21a
+ansible_password: flexib@3
+Instance_Name: test10
+count: 1
+wait: true

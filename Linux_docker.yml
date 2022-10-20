@@ -1,0 +1,11 @@
+---
+- name: Running Docker
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+
+   - name: pull an image
+     
+     docker_image:
+       name: harishpallapu/jmeter-3i:latest

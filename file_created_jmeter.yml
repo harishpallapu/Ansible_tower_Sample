@@ -1,0 +1,15 @@
+---
+- name: Running Docker
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Run a simple command (command)
+      docker_container_exec:
+         container: jmeter
+    
+    
+    - name: Creates directory
+      file:
+        path: /jmeter/bin/project
+        state: directory
