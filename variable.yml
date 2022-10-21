@@ -1,9 +1,9 @@
-Instance_Name: testing_vm
-keypair: ansible_tower
-instance_type: t2.micro
-image: ami-03e1a0a6d6e66e21a
-wait: bhaskar
-group: webserver
-count: 1
-region: ap-south-1
-security_group: launch-wizard-8
+Instance_Name:testing_vm
+keypair:ansible_tower
+instance_type:t2.micro
+image:ami-03e1a0a6d6e66e21a
+wait:yes
+group:webserver
+count:1
+region:ap-south-1
+security_group:launch-wizard-8
